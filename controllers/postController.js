@@ -45,6 +45,23 @@ class PostController {
       });
     }
   }
+
+  static async getAllPosts(req, res) {
+    try {
+      const posts = await post.find();
+
+      res.status(200).json({
+        message: "Sucesso ao buscar postagens",
+        success: true,
+        posts: posts || [],
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: "Erro ao buscar postagens",
+        success: false,
+      });
+    }
+  }
 }
 
 module.exports = { PostController };
