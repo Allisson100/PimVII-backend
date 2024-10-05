@@ -48,7 +48,7 @@ class PostController {
 
   static async getAllPosts(req, res) {
     try {
-      const posts = await post.find();
+      const posts = await post.find().sort({ createdAt: -1 });
 
       res.status(200).json({
         message: "Sucesso ao buscar postagens",
